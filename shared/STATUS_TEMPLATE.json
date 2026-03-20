@@ -1,0 +1,18 @@
+{
+  "current_sprint": "",
+  "tasks": {
+    "todo": [],
+    "in_progress": [],
+    "review": [],
+    "done": []
+  },
+  "metrics": {
+    "tasks_completed": 0,
+    "bugs_found": 0,
+    "code_reviews": 0,
+    "avg_review_time_hours": 0
+  },
+  "last_updated": "",
+  "blockers": [],
+  "team_notes": ""
+}

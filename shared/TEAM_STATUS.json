@@ -1,0 +1,29 @@
+{
+  "team_initialized": true,
+  "initialized_at": "2026-03-20T21:55:00+03:00",
+  "active_projects": [
+    {
+      "name": "example-cli",
+      "path": "./projects/example-cli",
+      "status": "demo_complete",
+      "last_updated": "2026-03-20T21:55:00+03:00"
+    }
+  ],
+  "team_capacity": {
+    "pm_bot": "active",
+    "dev_bot": "active",
+    "qa_bot": "available"
+  },
+  "current_sprint": null,
+  "sprint_goals": [],
+  "completed_tasks": [
+    "Team structure created (pm_bot, dev_bot, qa_bot)",
+    "Shared configurations established",
+    "Example CLI project created with tests",
+    "Workflow documentation completed"
+  ],
+  "current_work": null,
+  "next_steps": [
+    "Awaiting new project assignment from human"
+  ]
+}
