@@ -1,29 +1,36 @@
 # dev_bot Configuration
 
 ## Model Specification
-- **Primary Model**: ollama/qwen3-coder (local)
+- **Provider**: OpenRouter
+- **Primary Model**: openrouter/xiaomi/mimo-v2-pro
 - **Purpose**: Golang development, code generation, and implementation tasks
-- **Reasoning**: Optimized for coding tasks, strong performance on development workloads
+- **Reasoning**: Advanced model for higher quality code generation, better reasoning, and comprehensive testing
+
+## Model Details
+- **Context Window**: 32768 tokens (estimated)
+- **Reasoning**: true (advanced reasoning)
+- **Cost**: Check OpenRouter pricing for current rates
 
 ## Usage Guidelines
 When dev_bot performs development tasks:
-1. Use ollama/qwen3-coder for all code generation and implementation
-2. Leverage model's strengths in understanding Golang syntax and patterns
-3. Apply model's coding capabilities for:
+1. Use openrouter/xiaomi/mimo-v2-pro for all code generation and implementation
+2. Apply capabilities for:
    - Feature implementation
    - Test generation
    - Code refactoring
    - Bug fixes
    - Documentation generation
+3. Ensure high-quality output with thorough reasoning
+
+## Model Features
+- Cloud-based inference via OpenRouter
+- Strong reasoning capabilities
+- Best-in-class for code generation and analysis
+- Suitable for complex development tasks
 
 ## Fallback Strategy
-If local ollama/qwen3-coder is unavailable:
-1. Check if model is properly installed and running
-2. Verify Ollama service status
-3. Escalate to pm_bot for manual intervention if needed
-
-## Performance Considerations
-- Token limits: Optimize prompts for efficiency
-- Context window: Leverage for understanding larger code contexts
-- Temperature: Use balanced settings for creativity vs consistency
-- Stop sequences: Implement appropriate stopping conditions for code generation
+If xiaomi/mimo-v2-pro is unavailable:
+1. Check OpenRouter API status
+2. Verify API key configuration
+3. Fall back to openrouter/stepfun/step-3.5-flash:free if available
+4. Escalate to pm_bot for manual intervention if needed

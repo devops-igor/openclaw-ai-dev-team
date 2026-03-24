@@ -39,3 +39,31 @@
 - Sanitize outputs to prevent injection
 - Use constant-time comparison for secrets
 - Keep dependencies updated
+
+## Documentation
+
+### Project Documentation
+Every project must include:
+- `README.md` - Project overview, setup, usage
+- `WORKLOG.md` - Append-only action log (prevents context window memory loss)
+- `TASK.md`, `DEV_HANDOVER.md`, `QA_REPORT.md`, `COMPLETION_REPORT.md` - Handoff documents as per HANDOVER_PROTOCOL.md
+
+### WORKLOG.md Requirements
+- **Append-only:** Never edit or delete previous entries
+- **Log all major actions:** task starts, decisions, handoffs, tests, reviews, blockers, deployments
+- **Use format:** `YYYY-MM-DD HH:MM | AGENT | ACTION_TYPE | DESCRIPTION`
+- **Part of Definition of Done:** No entry = work not complete
+- See `shared/WORKLOG_TEMPLATE.md` for full guidelines
+
+### Code Documentation
+- Godoc comments for all exported functions, types, and packages
+- Inline comments for complex or non-obvious logic
+- Document edge cases and error conditions
+- Keep comments up-to-date with code changes
+
+### Commit Messages
+(If using version control)
+- Imperative mood: "Fix bug" not "Fixed bug"
+- Short summary (50 chars) + detailed body
+- Reference task IDs (e.g., "Implements TASK-001")
+- Explain why, not what

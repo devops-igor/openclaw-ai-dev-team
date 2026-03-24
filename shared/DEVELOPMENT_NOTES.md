@@ -1,48 +1,77 @@
 # Development Team Notes - Model Usage
 
-## Local Model Optimization for Development
+## Cloud-Based Model Configuration
 
-The AI development team employs a strategic model assignment approach:
+The AI development team uses cloud-based models via OpenRouter for flexibility and advanced capabilities:
 
-### 🎯 **Specialized Local Model for Development**
+### 🎯 **Specialized Cloud Model for Development**
 - **Agent**: dev_bot (Lead Golang Developer)
-- **Model**: ollama/qwen3-coder (local execution)
-- **Purpose**: Optimized Golang implementation, testing, and code generation
+- **Model**: openrouter/xiaomi/mimo-v2-pro
+- **Purpose**: High-quality Golang implementation, testing, and code generation
 
-### 🔄 **Flexible Models for Coordination & Review**
-- **Agents**: pm_bot (Project Manager), qa_bot (Quality Gatekeeper)
-- **Model**: Flexible/OpenRouter (general purpose)
-- **Purpose**: Planning, coordination, analysis, and review
+### 🔄 **Unified Model for Review**
+- **Agent**: qa_bot (Quality Gatekeeper)
+- **Model**: openrouter/xiaomi/mimo-v2-pro
+- **Purpose**: Code review, security analysis, and quality assessment
+
+### 📋 **Flexible Model for Coordination**
+- **Agent**: pm_bot (Project Manager)
+- **Model**: openrouter/minimax-m2.7:cloud (or similar flexible model)
+- **Purpose**: Planning, coordination, and reporting
 
 ## Benefits of This Approach
 
-### For Development Tasks (dev_bot + qwen3-coder):
-1. **Privacy**: Code and prompts remain entirely local
-2. **Performance**: Low latency, high throughput for coding tasks
-3. **Cost**: Eliminates per-token API costs during intensive development
-4. **Specialization**: Model specifically trained for code understanding
-5. **Reliability**: Independent of external service availability
+### For Development and Review (dev_bot + qa_bot):
+1. **Advanced Capabilities**: State-of-the-art models with strong reasoning
+2. **No Local Hardware**: No need for powerful GPUs or local installations
+3. **Scalability**: Cloud resources scale to demand
+4. **Consistency**: Same model across development and review ensures shared understanding
+5. **Cost Control**: Pay-per-use with no idle resource costs
+6. **Always Updated**: Provider maintains models with latest improvements
 
-### For Coordination & Review (pm_bot/qa_bot + flexible models):
-1. **Breadth**: Broad knowledge for understanding requirements and identifying issues
-2. **Flexibility**: Adaptable to various coordination and analysis tasks
-3. **Consistency**: Stable behavior for process-oriented work
+### For Coordination (pm_bot):
+1. **Flexibility**: General-purpose model adapts to various planning tasks
+2. **Reliability**: Cloud redundancy ensures availability
+3. **Easy Switching**: Can change models without local setup
 
 ## Implementation Details
 
 ### Model Verification
-Before starting work, verify the local model is available:
+Before starting work, verify the models are properly configured:
 ```bash
-ollama list | findstr qwen3-coder
+# For PowerShell:
+.\validate_models.ps1
+
+# For Bash:
+./validate_models.sh
+
+# Or manually check openclaw.json:
+cat ~/.openclaw/openclaw.json | grep -A5 "xiaomi/mimo-v2-pro"
 ```
 
-### Model Installation (if needed)
-```bash
-ollama pull qwen3-coder
+### Configuration
+Ensure `openclaw.json` includes the model under OpenRouter provider:
+```json
+{
+  "models": {
+    "providers": {
+      "openrouter": {
+        "models": [
+          {
+            "id": "xiaomi/mimo-v2-pro",
+            "name": "Xiaomi Mimo V2 Pro",
+            "contextWindow": 32768,
+            "input": ["text"]
+          }
+        ]
+      }
+    }
+  }
+}
 ```
 
 ### Usage in Workflows
-All Golang development work performed by dev_bot should explicitly utilize the local ollama/qwen3-coder model for:
+All Golang development work performed by dev_bot should explicitly utilize xiaomi/mimo-v2-pro for:
 - Feature implementation from specifications
 - Test generation (unit, integration, table-driven)
 - Code refactoring and optimization
@@ -50,88 +79,102 @@ All Golang development work performed by dev_bot should explicitly utilize the l
 - Technical documentation generation
 - Performance analysis and improvement
 
+All code review work performed by qa_bot should utilize the same model for consistency.
+
 ### Fallback Procedures
-If the local model becomes unavailable:
-1. Check Ollama service status: `ollama serve`
-2. Verify model installation: `ollama list`
-3. Reinstall if necessary: `ollama pull qwen3-coder`
-4. Notify pm_bot for coordination of alternatives
+If the primary model becomes unavailable:
+1. Check OpenRouter API status and account balance
+2. Verify API key configuration in openclaw.json
+3. Fall back to openrouter/stepfun/step-3.5-flash:free if available
+4. Escalate to pm_bot for manual intervention if needed
 5. Document any workaround in project notes
 
-## Best Practices for Local Model Usage
+## Best Practices for Cloud Model Usage
 
 ### Prompt Engineering
 - Be specific about Golang requirements and constraints
 - Reference shared/GOLANG_STANDARDS.md for guidance
 - Provide clear context about existing codebase structure
 - Specify desired output format (e.g., "complete Go file", "function only")
+- Leverage the large context window for broader code understanding
 
 ### Context Management
-- Leverage the model's context window for understanding larger code sections
-- Break complex tasks into smaller, manageable pieces when needed
+- Use the model's full context window for understanding larger code sections
+- Break complex tasks into smaller, manageable pieces when appropriate
 - Use iterative refinement for sophisticated implementations
+- Include relevant code snippets and documentation in prompts
 
 ### Quality Assurance
 - All code from dev_bot undergoes review by qa_bot
-- Local model usage does not bypass quality gates
+- Cloud model usage does not bypass quality gates
 - Standards compliance verified through shared/GOLANG_STANDARDS.md
 - Security review performed regardless of generation source
+- Consistency between dev and QA models improves review accuracy
+
+## Cost Optimization
+
+### Token Usage Awareness
+- Be mindful of context window usage (32K tokens)
+- Use concise but complete prompts
+- Avoid unnecessary repetition in conversations
+
+### Monitoring
+- Track OpenRouter usage and costs periodically
+- Set up alerts for unusual spending
+- Consider using smaller/faster models for routine tasks if needed
 
 ## Troubleshooting Guide
 
 ### Common Issues & Solutions
 
-**Problem**: "model not found" error
-**Solution**: 
-```powershell
-ollama pull qwen3-coder
-```
+**Problem**: "model not found" or "invalid model" error
+**Solution**:
+- Verify the model ID is exactly "openrouter/xiaomi/mimo-v2-pro"
+- Check that your OpenRouter account has access to this model
+- Ensure openclaw.json is properly formatted and OpenClaw restarted
+
+**Problem**: API rate limits or quota exceeded
+**Solution**:
+- Check your OpenRouter account balance and limits
+- Implement retry logic with exponential backoff
+- Consider upgrading your OpenRouter plan if needed
 
 **Problem**: Slow response times
 **Solution**:
-- Check system resources (RAM/VRAM usage)
-- Consider model quantization options
-- Verify Ollama is using appropriate hardware acceleration
+- Check your network connectivity
+- Consider that cloud models may have variable latency
+- Use a faster fallback model for time-critical tasks
 
-**Problem**: Poor code quality
+**Problem**: Poor code quality output
 **Solution**:
-- Review and refine prompts for specificity
-- Ensure adequate context is provided
-- Verify understanding of Go idioms and best practices
-- Leverage qa_bot review for quality assurance
+- Improve prompt specificity
+- Provide more context and examples
+- Break down complex tasks into smaller steps
+- Consider that model may need more detailed requirements
 
-**Problem**: Service not responding
+**Problem**: OpenRouter API key invalid
 **Solution**:
-```powershell
-# Restart Ollama service
-net stop ollama
-net start ollama
-# or
-ollama serve
-```
+- Verify the API key in `~/.openclaw/openclaw.json`
+- Ensure the key has necessary permissions
+- Generate a new key from OpenRouter dashboard if needed
 
-## Team Coordination with Mixed Models
+## Team Coordination with Unified Model
 
-Despite using different models, effective collaboration requires:
+Using the same model for both development and review enhances collaboration:
 
-### Consistent Communication
-- Clear, specific requirements from human to pm_bot
-- Well-defined tasks from pm_bot to dev_bot
-- Specific, actionable feedback from qa_bot to dev_bot
-- Regular status updates from pm_bot to human
+### Shared Understanding
+- Both dev_bot and qa_bot are familiar with the model's strengths and weaknesses
+- Consistent code style and pattern recognition
+- Easier communication about implementation details
 
-### Shared Standards
-All agents reference the same:
-- Golang coding standards (shared/GOLANG_STANDARDS.md)
-- Project templates (shared/GOLANG_PROJECT_TEMPLATE.md)
-- Workflow definitions (shared/WORKFLOW.md)
-- Quality criteria (defined in WORKFLOW.md)
+### Predictable Output
+- Code generation and review use similar reasoning patterns
+- Fewer misunderstandings due to model-specific quirks
+- Smoother handoffs between development and review
 
-### Output Format Consistency
-Regardless of model used, agents should produce:
-- Well-structured, readable outputs
-- Actionable, specific feedback
-- Clear indication of completion status
-- Proper formatting for easy consumption by other agents
+### Efficient Iterations
+- Feedback from qa_bot is more likely to be actionable for dev_bot
+- Less back-and-forth needed to clarify review comments
+- Faster resolution of issues
 
-This approach ensures that while dev_bot benefits from local model optimization for development tasks, the team maintains cohesive, high-quality collaboration throughout the development lifecycle.
+This approach ensures that while we leverage cloud capabilities, the team maintains cohesive, high-quality collaboration throughout the development lifecycle.

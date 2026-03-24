@@ -1,29 +1,37 @@
 {
   "team_initialized": true,
   "initialized_at": "2026-03-20T21:55:00+03:00",
+  "last_updated": "2026-03-23T03:56:00+03:00",
+  "projects_completed": [],
   "active_projects": [
     {
-      "name": "example-cli",
-      "path": "./projects/example-cli",
-      "status": "demo_complete",
-      "last_updated": "2026-03-20T21:55:00+03:00"
+      "name": "youtube-downloader-bot",
+      "path": "C:\\Users\\Igor\\OpenClaw\\openclaw-ai-dev-team\\projects\\youtube-downloader-bot",
+      "status": "IN_PROGRESS",
+      "phase": "migration",
+      "created": "2026-03-21T02:52:00+03:00",
+      "spec_ready": true,
+      "plan_ready": true,
+      "human_approved": true,
+      "human_approved_at": "2026-03-21T03:03:00+03:00",
+      "feature": "Migrate Yandex Disk client to tigusigalpa/yandex-disk-go SDK",
+      "current_task": null,
+      "current_task_assignee": null,
+      "tasks": {
+        "TASK-11": { "status": "completed", "qa_status": "approved" },
+        "TASK-12": { "status": "completed", "qa_status": "approved" },
+        "TASK-13": { "status": "completed", "qa_status": "approved" },
+        "TASK-14": { "status": "completed", "qa_status": "approved" },
+        "TASK-15": { "status": "completed", "qa_status": "approved", "assignee": "dev_bot" }
+      }
     }
   ],
+  "recently_completed": [],
   "team_capacity": {
-    "pm_bot": "active",
-    "dev_bot": "active",
+    "pm_bot": "available",
+    "dev_bot": "busy",
     "qa_bot": "available"
   },
-  "current_sprint": null,
-  "sprint_goals": [],
-  "completed_tasks": [
-    "Team structure created (pm_bot, dev_bot, qa_bot)",
-    "Shared configurations established",
-    "Example CLI project created with tests",
-    "Workflow documentation completed"
-  ],
-  "current_work": null,
-  "next_steps": [
-    "Awaiting new project assignment from human"
-  ]
+  "team_status": "idle",
+  "next_action": "TASK-15 in progress — migrating to tigusigalpa/yandex-disk-go SDK"
 }

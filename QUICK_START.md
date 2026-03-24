@@ -102,6 +102,29 @@ Check these files for team status:
 - `shared/STATUS_TEMPLATE.json` - Template for sprint/task tracking
 - Individual agent folders for their current focus areas
 
+## 📝 **WORKLOG - Preventing Memory Loss**
+
+Every project includes a `WORKLOG.md` (append-only log). This prevents "memory loss" when the context window compacts.
+
+**Why it matters:**
+- Agents append entries for every major action, decision, and state change
+- You can restart work and catch up by reading WORKLOG.md
+- Complete project history is preserved for audits and onboarding
+
+**Agents must log:**
+- Task starts/completions
+- Significant decisions (with rationale)
+- Architecture changes
+- Blockers and resolutions
+- Reviews and test results
+- Handoffs and meetings
+
+**Format:** `YYYY-MM-DD HH:MM | AGENT | ACTION_TYPE | DESCRIPTION`
+
+**Responsibility:** It's part of the Definition of Done for every task. No worklog entry means the work isn't done.
+
+See `shared/WORKLOG_TEMPLATE.md` for full guidelines and examples.
+
 ## 🛠️ **Extending the Team**
 
 As you work with the team, you might want to add:

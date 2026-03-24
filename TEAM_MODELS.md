@@ -6,42 +6,42 @@ This document specifies the language model usage for each agent in the AI develo
 ## Model Assignments
 
 ### 👥 **Project Manager (pm_bot)**
-- **Model**: Default/OpenRouter (flexible for planning and coordination)
+- **Model**: ollama/minimax-m2.7:cloud (flexible for planning and coordination)
 - **Purpose**: Task decomposition, planning, coordination, and reporting
 - **Reasoning**: Benefits from broad knowledge for understanding requirements and breaking them down
 
 ### 👨‍💻 **Lead Golang Developer (dev_bot)**
-- **Model**: **ollama/qwen3-coder (local)** ✅ **SPECIFICALLY REQUESTED**
+- **Model**: **openrouter/xiaomi/mimo-v2-pro** ✅
 - **Purpose**: Golang development, code generation, implementation
-- **Reasoning**: 
-  - Specifically optimized for coding tasks
-  - Strong performance on development workloads
-  - Local execution for privacy and reduced latency
-  - Cost-effective for intensive coding tasks
-  - Excellent Golang language understanding
+- **Reasoning**:
+  - Advanced reasoning and coding capabilities
+  - Cloud-based inference (no local GPU required)
+  - Reliable availability
+  - Strong performance on Golang patterns
 
 ### 🔍 **Quality Gatekeeper (qa_bot)**
-- **Model**: Default/OpenRouter (flexible for analysis and review)
+- **Model**: **openrouter/xiaomi/mimo-v2-pro** ✅
 - **Purpose**: Code review, security analysis, quality assessment
-- **Reasoning**: Benefits from broad knowledge for identifying diverse issues and best practices
+- **Reasoning**: Advanced reasoning capabilities for thorough code analysis and security scanning
 
-## Local Model Specification
+## Model Specifications
 
-### ollama/qwen3-coder Details
-- **Provider**: Ollama (local execution)
-- **Model Family**: Qwen3 series
-- **Specialization**: Coding and development tasks
+### xiaomi/mimo-v2-pro (dev_bot & qa_bot)
+- **Provider**: OpenRouter
+- **Model Family**: Xiaomi Mimo V2 series
+- **Specialization**: General purpose with strong coding and reasoning capabilities
+- **Context Window**: 32768 tokens (estimated)
 - **Advantages**:
-  - Local execution (data privacy)
-  - No API costs for intensive usage
-  - Reduced latency
-  - Optimized for code understanding and generation
-  - Strong performance on programming benchmarks
+  - Advanced reasoning for complex tasks
+  - Strong code generation and review capabilities
+  - Cloud-based inference (no local GPU required)
+  - Reliable availability through OpenRouter
+  - Good balance of performance and cost
 
 ## Usage Instructions
 
 ### For dev_bot Tasks:
-All Golang development work should utilize the local ollama/qwen3-coder model including:
+All Golang development work should utilize xiaomi/mimo-v2-pro:
 - Feature implementation
 - Test generation
 - Code refactoring
@@ -49,44 +49,64 @@ All Golang development work should utilize the local ollama/qwen3-coder model in
 - Technical documentation
 - Performance optimization
 
+### For qa_bot Tasks:
+All code review and QA work should utilize xiaomi/mimo-v2-pro:
+- Security scanning
+- Bug detection
+- Code quality assessment
+- Test coverage evaluation
+- Performance review
+
 ### Verification:
-To confirm the model is available locally:
+To confirm the model is properly configured:
 ```bash
-ollama list
-# Should show: qwen3-coder
+# Check OpenClaw config has the model registered
+cat ~/.openclaw/openclaw.json | grep -A2 "xiaomi/mimo-v2-pro"
+# Should show the model in the openrouter provider models list
 ```
 
-### Troubleshooting:
-If model is not available:
-1. Install with: `ollama pull qwen3-coder`
-2. Ensure Ollama service is running
-3. Check system resources (RAM/VRAM requirements)
-4. Escalate to pm_bot if persistent issues
+### Model Switching:
+If you need to change the model:
+1. Update `dev_bot/AGENTS.md` or `qa_bot/AGENTS.md` with new model name
+2. Update `openclaw.json` models array if adding new provider
+3. Restart OpenClaw gateway to apply changes
 
-## Benefits of Local Model for dev_bot
+## Benefits of Cloud Model for dev_bot & qa_bot
 
 ### Performance Advantages:
-- Faster iteration cycles (no network latency)
-- Consistent availability (no service downtime)
-- Predictable performance characteristics
+- Fast inference without local GPU requirements
+- Consistent availability (cloud redundancy)
+- Scalable compute resources on demand
+- Advanced reasoning capabilities for complex tasks
 
 ### Cost Advantages:
-- No per-token API costs
-- Unlimited usage for development tasks
-- Fixed infrastructure cost only
+- Pay-per-use model (no idle resource costs)
+- No hardware investment required
+- Predictable operational expenses based on usage
 
-### Privacy Advantages:
-- Code remains local
-- No external API exposure
-- Intellectual property protection
-- Compliance with data locality requirements
+### Practical Advantages:
+- No local GPU/RAM constraints
+- Easy model updates and switching
+- Access to advanced models with latest improvements
+- Reliable availability for production use
 
 ## Team Coordination Notes
 
-While dev_bot uses a specialized local model, effective team collaboration requires:
+While both dev_bot and qa_bot use the same advanced cloud model, effective team collaboration requires:
 - Clear communication of requirements and expectations
-- Standardized output formats regardless of model used
+- Standardized output formats regardless of task
 - Consistent quality standards across all agents
 - Shared understanding of Golang best practices
 
-The mixed-model approach (local specialized + general flexible) optimizes both performance and collaboration effectiveness.
+Using the same model for both development and review ensures consistency in reasoning patterns and code understanding, leading to smoother handoffs and fewer misunderstandings.
+
+## Configuration Files
+
+| File | Purpose |
+|------|---------|
+| `openclaw.json` | Global model registry and provider configuration |
+| `dev_bot/AGENTS.md` | dev_bot role definition with model specification |
+| `dev_bot/SETTINGS.md` | Detailed model configuration and usage guidelines |
+| `qa_bot/AGENTS.md` | qa_bot role definition with model specification |
+| `qa_bot/SETTINGS.md` | Detailed model configuration and usage guidelines |
+| `shared/TEAM_MODELS.md` | This document - team-wide model strategy |

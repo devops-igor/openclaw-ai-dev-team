@@ -25,7 +25,8 @@ project-name/
 ├── go.mod                  # Go module definition
 ├── go.sum                  # Dependency checksums
 ├── main.go                 # Application entry point (for simple apps)
-└── README.md               # Project documentation
+├── README.md               # Project documentation
+└── WORKLOG.md              # Append-only action log (prevents context loss)
 ```
 
 ## Recommended Practices
