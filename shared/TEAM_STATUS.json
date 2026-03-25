@@ -1,37 +1,85 @@
 {
   "team_initialized": true,
   "initialized_at": "2026-03-20T21:55:00+03:00",
-  "last_updated": "2026-03-23T03:56:00+03:00",
+  "last_updated": "2026-03-25T22:06:00+03:00",
   "projects_completed": [],
   "active_projects": [
+    {
+      "name": "gramarr-plex",
+      "path": "C:\\Users\\Igor\\OpenClaw\\openclaw-ai-dev-team\\projects\\gramarr-plex",
+      "status": "IN_PROGRESS",
+      "phase": "bugfixes",
+      "created": "2026-03-25T20:59:00+03:00",
+      "spec_ready": true,
+      "plan_ready": true,
+      "human_approved": true,
+      "human_approved_at": "2026-03-25T20:59:00+03:00",
+      "feature": "gramarr-plex bugfixes — 22 issues from QA review",
+      "repo": "https://gitlab.com/devops_igor/gramarr-plex",
+      "current_task": null,
+      "current_task_assignee": null,
+      "tasks": {
+        "GQA-01": { "status": "completed", "qa_status": "merged", "assignee": "dev_bot", "description": "Fix Sonarr API URL missing /v3 in createApiURL()" },
+        "GQA-02": { "status": "completed", "qa_status": "merged", "assignee": "dev_bot", "description": "Fix Plex nil panic on connection/search error" },
+        "GQA-03": { "status": "completed", "qa_status": "merged", "assignee": "dev_bot", "description": "Fix Sonarr nil panic on POST/PUT failure" },
+        "GQA-04": { "status": "completed", "qa_status": "merged", "assignee": "dev_bot", "description": "Fix plaintext password leak to admins on failed auth" },
+        "GQA-05": { "status": "completed", "qa_status": "merged", "assignee": "dev_bot", "description": "Hash passwords instead of plaintext comparison" },
+        "GQA-06": { "status": "completed", "qa_status": "merged", "assignee": "dev_bot", "description": "Fix race condition in UserDB (mutex not held on Create/Update/Delete)" },
+        "GQA-07": { "status": "completed", "qa_status": "merged", "assignee": "dev_bot", "description": "Fix json.Unmarshal error silently dropped on corrupt users.json" },
+        "GQA-08": { "status": "completed", "qa_status": "merged", "assignee": "dev_bot", "description": "Stop API key from appearing in error log messages" },
+        "GQA-09": { "status": "pending", "qa_status": "pending", "assignee": "dev_bot", "description": "Path traversal hardening in GetProfile" },
+        "GQA-10": { "status": "completed", "qa_status": "approved", "assignee": "dev_bot", "description": "Replace deprecated ioutil with os" },
+        "GQA-11": { "status": "pending", "qa_status": "pending", "assignee": "dev_bot", "description": "Upgrade resty.v1 to resty/v2" },
+        "GQA-12": { "status": "pending", "qa_status": "pending", "assignee": "dev_bot", "description": "Implement /users command handler" },
+        "GQA-13": { "status": "completed", "qa_status": "merged", "assignee": "dev_bot", "description": "Add HTTP status code checks in Radarr/Sonarr clients" },
+        "GQA-14": { "status": "completed", "qa_status": "merged", "assignee": "dev_bot", "description": "Implement config validation at startup" },
+        "GQA-15": { "status": "completed", "qa_status": "approved", "assignee": "dev_bot", "description": "Consistent language in user prompts — all messages translated to Russian" },
+        "GQA-16": { "status": "pending", "qa_status": "pending", "assignee": "dev_bot", "description": "Fix Go naming conventions (camelCase variables)" },
+        "GQA-17": { "status": "completed", "qa_status": "merged", "assignee": "dev_bot", "description": "Add graceful shutdown with SIGTERM handling" },
+        "GQA-18": { "status": "completed", "qa_status": "approved", "assignee": "dev_bot", "description": "Remove debug fmt.Println and unused code" },
+        "GQA-19": { "status": "completed", "qa_status": "merged", "assignee": "dev_bot", "description": "Add .dockerignore to prevent secrets leaking" },
+        "GQA-20": { "status": "completed", "qa_status": "approved", "assignee": "dev_bot", "description": "Make Dockerfile platform-agnostic — multi-arch with non-root user" },
+        "GQA-21": { "status": "pending", "qa_status": "pending", "assignee": "dev_bot", "description": "Save() errors properly propagated/handled" },
+        "GQA-22": { "status": "pending", "qa_status": "pending", "assignee": "dev_bot", "description": "Conversation state persistence consideration" },
+        "GLOG-01": { "status": "completed", "qa_status": "merged", "assignee": "dev_bot", "description": "slog setup with level+format config" },
+        "GLOG-02": { "status": "completed", "qa_status": "merged", "assignee": "dev_bot", "description": "Request logging middleware" },
+        "GLOG-03": { "status": "completed", "qa_status": "merged", "assignee": "dev_bot", "description": "Sonarr/Radarr API logging" },
+        "GLOG-04": { "status": "completed", "qa_status": "merged", "assignee": "dev_bot", "description": "util.Send error logging" },
+        "GLOG-05": { "status": "completed", "qa_status": "merged", "assignee": "dev_bot", "description": "Audit logging for admin actions" },
+        "GLOG-06": { "status": "completed", "qa_status": "merged", "assignee": "dev_bot", "description": "User action logging" },
+        "GLOG-07": { "status": "completed", "qa_status": "merged", "assignee": "dev_bot", "description": "Router command/fallback logging" },
+        "GLOG-08": { "status": "completed", "qa_status": "merged", "assignee": "dev_bot", "description": "UserDB CRUD logging" },
+        "GLOG-09": { "status": "completed", "qa_status": "merged", "assignee": "dev_bot", "description": "Remove debug fmt.Println" },
+        "GLOG-10": { "status": "completed", "qa_status": "merged", "assignee": "dev_bot", "description": "Logging config fields in config struct" }
+      }
+    },
     {
       "name": "youtube-downloader-bot",
       "path": "C:\\Users\\Igor\\OpenClaw\\openclaw-ai-dev-team\\projects\\youtube-downloader-bot",
       "status": "IN_PROGRESS",
-      "phase": "migration",
+      "phase": "enhancements",
       "created": "2026-03-21T02:52:00+03:00",
       "spec_ready": true,
       "plan_ready": true,
       "human_approved": true,
-      "human_approved_at": "2026-03-21T03:03:00+03:00",
-      "feature": "Migrate Yandex Disk client to tigusigalpa/yandex-disk-go SDK",
+      "human_approved_at": "2026-03-24T20:28:00+03:00",
+      "feature": "youtube-downloader-bot v1.1 — format cleanup + config live reload",
+      "repo": "https://github.com/devops-igor/openclaw-test.git",
       "current_task": null,
       "current_task_assignee": null,
       "tasks": {
-        "TASK-11": { "status": "completed", "qa_status": "approved" },
-        "TASK-12": { "status": "completed", "qa_status": "approved" },
-        "TASK-13": { "status": "completed", "qa_status": "approved" },
-        "TASK-14": { "status": "completed", "qa_status": "approved" },
-        "TASK-15": { "status": "completed", "qa_status": "approved", "assignee": "dev_bot" }
+        "TASK-27": { "status": "completed", "qa_status": "approved", "assignee": "dev_bot", "description": "Simplify format listing — deduplicate by resolution, clean output like '720p — ~150MB'" },
+        "TASK-28": { "status": "completed", "qa_status": "approved", "assignee": "dev_bot", "description": "Config file live reload — monitor config for changes, auto-reload without restart" }
       }
     }
   ],
   "recently_completed": [],
   "team_capacity": {
-    "pm_bot": "available",
+    "pm_bot": "busy",
     "dev_bot": "busy",
-    "qa_bot": "available"
+    "qa_bot": "available",
+    "git_bot": "available"
   },
-  "team_status": "idle",
-  "next_action": "TASK-15 in progress — migrating to tigusigalpa/yandex-disk-go SDK"
+  "team_status": "active",
+  "next_action": "Logging overhaul complete — 10 GLOG tasks (Phase 5) done and pushed. 10 P3 items remain (GQA-09..22). Team idle."
 }
