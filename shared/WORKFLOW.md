@@ -17,9 +17,10 @@
 A task is considered "done-done" when:
 1. Code is implemented by dev_bot
 2. Code passes review by qa_bot (no critical issues)
-3. All tests pass
-4. Code follows Go best practices
-5. PM has verified completion and reported to human
+3. **All three security tools pass clean** (golangci-lint, gosec, govulncheck) — mandatory, no exceptions
+4. All tests pass
+5. Code follows Go best practices
+6. PM has verified completion and reported to human
 
 ## Escalation Path
 - If dev_bot and qa_bot disagree on implementation, PM mediates
