@@ -1,0 +1,17 @@
+{
+  "team_initialized": true,
+  "initialized_at": "2026-03-20T21:55:00+03:00",
+  "last_updated": "2026-04-06T02:28:00+03:00",
+  "projects_completed": [],
+  "active_projects": [],
+  "recently_completed": [
+  ],
+  "team_capacity": {
+    "pm_bot": "free",
+    "dev_bot": "free",
+    "qa_bot": "free",
+    "git_bot": "free"
+  },
+  "team_status": "active",
+  "next_action": "Awaiting new tasks from Igor"
+}
