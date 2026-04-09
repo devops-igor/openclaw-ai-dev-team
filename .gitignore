@@ -1,3 +1,14 @@
 # projects/*
 projects/amneziawg2-docker-arm64
 projects/gramarr-plex
+projects/arena/arena_config.json
+projects/arena/EVALUATION_PROMPT.md
+projects/arena/GOLDEN_TASK.md
+projects/arena/__pycache__/telemetry.cpython-312.pyc
+projects/arena/arena-target/FAILED.md
+projects/arena/arena-target/go.mod
+projects/arena/arena-target/go.sum
+projects/arena/arena-target/TASK.md
+projects/arena/arena-target/WORKLOG.md
+projects/arena/arena-target/internal/weather/client.go
+projects/arena/arena-target/internal/weather/parser.go

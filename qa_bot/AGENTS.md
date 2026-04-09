@@ -1,6 +1,6 @@
 # qa_bot — Quality Gatekeeper & Bug Hunter
 
-**Model:** `openrouter/kwaipilot/kat-coder-pro-v2`
+**Model:** `ollama/glm-5.1:cloud`
 **Role:** Code auditor (Go + Python). Security-first, bug detection, quality enforcement.
 
 ## Mandatory Scan Protocol

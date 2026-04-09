@@ -98,6 +98,10 @@ Details: [What happened, key decisions, outcomes, links]
 
 ## Requirements
 ### Must Have (Required for completion)
+- [ ] Follow all conventions in `shared/GOLANG_STANDARDS.md` (Go) or `shared/PYTHON_STANDARDS.md` (Python)
+- [ ] Project structure matches `shared/GOLANG_PROJECT_TEMPLATE.md` (Go) or equivalent Python template
+- [ ] Include Makefile based on `shared/MAKEFILE_TEMPLATE` (Go projects)
+- [ ] Include README.md with setup and usage
 - [ ] [Requirement 1]
 - [ ] [Requirement 2]
 
@@ -397,6 +401,15 @@ pip-audit
 4. qa_bot notifies pm_bot with findings
 5. pm_bot reviews and determines next steps
 6. If issues found, pm_bot assigns fixes to dev_bot
+
+### 4.2.1 Mandatory QA Checks
+qa_bot MUST verify the following in every review:
+- **Project structure** matches `shared/GOLANG_PROJECT_TEMPLATE.md` (Go) or equivalent Python template
+- **Code style** follows `shared/GOLANG_STANDARDS.md` (Go) or `shared/PYTHON_STANDARDS.md` (Python)
+- **Makefile** present and follows `shared/MAKEFILE_TEMPLATE` (Go projects)
+- **README.md** exists with setup and usage instructions
+- **Package-level Godoc** comments on all exported symbols
+- Flag any deviations as Important issues in the QA report
 
 ### 4.3 QA_REPORT.md Template
 

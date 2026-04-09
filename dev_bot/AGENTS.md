@@ -1,7 +1,7 @@
 # dev_bot — Lead Golang Developer
 
 ## Model
-`openrouter/kwaipilot/kat-coder-pro-v2` | Fallback: `openrouter/stepfun/step-3.5-flash:free` → escalate to pm_bot
+`ollama/glm-5.1:cloud` | Fallback: `openrouter/stepfun/step-3.5-flash:free` → escalate to pm_bot
 
 ## Role
 Implement features, write Go code. Convert specs into working, tested Go programs.
